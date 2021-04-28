@@ -1,26 +1,35 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <ul>
+    <li>
+      <router-link to="/">Home</router-link>
+    </li>
+    <li>
+      <router-link to="/about">About</router-link>
+    </li>
+    <li>
+      <a v-if="isLoggedIn" href="#" @click="logout">Logout</a>
+      <a v-else href="#" @click="$_login">Login</a>
+    </li>
+  </ul>
+  <main>
+    <router-view></router-view>
+  </main>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { mapActions, mapGetters } from "vuex";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  name: "App",
+  computed: mapGetters(["isLoggedIn"]),
+  methods: {
+    ...mapActions(["login", "logout"]),
+    $_login() {
+      this.login("this-is-a-token");
+    },
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
