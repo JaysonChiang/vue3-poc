@@ -1,17 +1,17 @@
 <template>
-  <ul>
-    <li>
+  <div class="header">
+    <div>
       <router-link to="/">Home</router-link>
-    </li>
-    <li>
+    </div>
+
+    <div>
       <router-link to="/about">About</router-link>
-    </li>
-    <li>
+      |
       <a v-if="isLoggedIn" href="#" @click="logout">Logout</a>
       <a v-else href="#" @click="$_login">Login</a>
-    </li>
-  </ul>
-  <main>
+    </div>
+  </div>
+  <main class="container">
     <router-view></router-view>
   </main>
 </template>
@@ -31,5 +31,14 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+@import "./assets/scss/main.scss";
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 3rem;
+  border-bottom: 1px solid $color-grey-dark;
+}
 </style>

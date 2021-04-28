@@ -17,6 +17,6 @@ export default {
 <style lang="scss" scoped>
 @import "../assets/scss/main.scss";
 h1 {
-  color: $color-primary;
+  color: $color-secondary-light;
 }
 </style>
