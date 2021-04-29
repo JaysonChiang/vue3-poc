@@ -1,15 +1,23 @@
 <template>
-  <div class="hello">
-    <h1>About</h1>
+  <div>
+    <h1>About me</h1>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "About",
   props: {
     msg: String,
   },
+  computed: mapGetters(["isLoggedIn"]),
+  created(){
+    if(!this.isLoggedIn){
+      this.$router.replace('/');
+    }
+  }
 };
 </script>
 
