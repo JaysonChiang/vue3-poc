@@ -1,38 +1,24 @@
 <template>
-  <div class="header">
-    <div>
-      <router-link to="/">Home</router-link>
-    </div>
-
-    <div>
-      <router-link to="/about">About</router-link>
-      |
-      <a v-if="isLoggedIn" href="#" @click="logout">Logout</a>
-      <a v-else href="#" @click="$_login">Login</a>
-    </div>
-  </div>
+  <Header />
   <main class="container">
     <router-view></router-view>
   </main>
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
+import Header from './components/Header';
 
 export default {
-  name: "App",
-  computed: mapGetters(["isLoggedIn"]),
-  methods: {
-    ...mapActions(["login", "logout"]),
-    $_login() {
-      this.login("this-is-a-token");
-    },
+  name: 'App',
+  components: {
+    Header,
   },
 };
 </script>
 
 <style lang="scss" scoped>
-@import "./assets/scss/main.scss";
+@import './assets/scss/main.scss';
+
 .header {
   width: 100%;
   display: flex;
